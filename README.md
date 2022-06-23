@@ -7,98 +7,86 @@ Anaconda - Python 3.7
 
 ## Algorithm:
 ### Step1:
-Import the necessary libraries and read two images, Color image and Gray Scale image.
-<br>
 
+Import the necessary libraries and read two images, Color image and Gray Scale image.
 ### Step2:
 Calculate the Histogram of Gray scale image and each channel of the color image.
-<br>
-
 ### Step3:
 Display the histograms with their respective images.
-<br>
-
 ### Step4:
-Equalize the grayscale image.
-<br>
 
+Equalize the grayscale image.
 ### Step5:
 Display the grayscale image.
-<br>
 
-## Program:
+## <br/><br/><br/><br/><br/><br/><br/>Program:
 ```python
 # Developed By: Balaji N
-# Register Number: 212220230006
+# Register Number:212220230006
+
 
 
 # Write your code to find the histogram of gray scale image and color image channels.
+
 import cv2
 import matplotlib.pyplot as plt
-Gray_image=cv2.imread('parrot.png')
-plt.imshow(Gray_image)
-plt.show()
-hist=cv2.calcHist([Gray_image],[0],None,[256],[0,256])
+Gray_image= cv2.imread('flower.jpg')
+re=cv2.resize(Gray_image,(280,175))
+Color_image= cv2.imread('bike.jpg') 
+cv2.imshow('Gray image',re)
+
+cv2.imshow ('colour image',Color_image)
+cv2.waitKey()
+
+
+
+# Display the histogram of gray scale image and any one channel histogram from color image
+
+hist  = cv2.calcHist([Gray_image], [0], None, [256], [0,256]) 
+histl=cv2.calcHist([Color_image], [1], None, [256], [0,256]) 
 plt.figure()
 plt.title("Histogram")
 plt.xlabel('grayscale value')
 plt.ylabel('pixel count')
 plt.stem(hist)
+plt.title("grey image")
 plt.show()
 
-
-# Display the histogram of gray scale image and any one channel histogram from color image
-import cv2
-import matplotlib.pyplot as plt
-Color_image=cv2.imread('dog.jpg')
-plt.imshow(Color_image)
+plt.stem(histl)
+plt.title("color image")
 plt.show()
-hist1=cv2.calcHist([Color_image],[1],None,[256],[0,256])
-plt.figure()
-plt.title("Histogram")
-plt.xlabel('Intensity value')
-plt.ylabel('pixel count')
-plt.stem(hist1)
-plt.show()
-
-
 
 # Write the code to perform histogram equalization of the image. 
-import cv2
-Gray_image=cv2.imread('parrot.png',0)
-equ=cv2.equalizeHist(Gray_image)
-cv2.imshow('Gray Image',Gray_image)
+
+
+Gray_image= cv2.imread('flower.jpg',0)
+re=cv2.resize(Gray_image,(280,175))
+equ=cv2.equalizeHist(re)
+cv2.imshow('Gray Image',re)
+
 cv2.imshow('Equalized Image',equ)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+
+
+
+
 
 ```
-
-
-
 ## Output:
 ### Input Grayscale Image and Color Image
-![output](./static/img/o1d4.png)
-![output](./static/img/o2d4.png)
-<br>
-<br>
-<br>
-<br>
+![d1](https://user-images.githubusercontent.com/75235789/165101580-c87b14ba-413b-497c-a514-490aa519543c.jpg)
+
+
+
 
 ### Histogram of Grayscale Image and any channel of Color Image
-![output](./static/img/o3d4.png)
-![output](./static/img/o4d4.png)
-<br>
-<br>
-<br>
-<br>
+![d2](https://user-images.githubusercontent.com/75235789/165101619-b5e36751-106b-42e7-97d9-cbfb7f7b6b7c.jpg)
 
-### Histogram Equalization of Grayscale Image
-![output](./static/img/o5d4.png)
-<br>
-<br>
-<br>
-<br>
 
-## Result: 
+### <br/><br/><br/><br/><br/>Histogram Equalization of Grayscale Image
+
+![d4](https://user-images.githubusercontent.com/75235789/165108568-b0787e1d-bc48-4119-a491-34218301966c.jpg)
+
+## <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Result: 
 Thus the histogram for finding the frequency of pixels in an image with pixel values ranging from 0 to 255 is obtained. Also,histogram equalization is done for the gray scale image using OpenCV.
